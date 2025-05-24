@@ -1,0 +1,51 @@
+
+1. minikube start 
+
+2. kubectl create namespace projeto-2 
+
+3. criar o arquivo "app_deploy.yaml"
+	 apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: app-color
+       namespace: projeto-1
+     spec:
+       replicas: 4
+       selector:
+         matchLabels:
+           app: app-color
+       template:
+         metadata:
+           labels:
+             app: app-color
+         spec:
+           containers:
+           - name: app-color
+             image: kodekloud/webapp-color
+             ports:
+             - containerPort: 8080
+			 
+3. criar o arquivo "app_service.yaml"			 
+
+     apiVersion: v1
+     kind: Service
+     metadata:
+       name: app-color
+       namespace: projeto-1
+     spec:
+       type: NodePort
+       selector:
+         app: app-color
+       ports:
+       - port: 80
+         targetPort: 8080
+         nodePort: 30007
+		 
+4. kubectl get pods,svc -n projeto-1
+
+5. minikube service app-color -n projeto-1 
+
+
+Obs.: Pode alterar a quantidade de replicas com o comando: 
+
+      kubectl scale deployment app-color --replicas=6 -n projeto-1
