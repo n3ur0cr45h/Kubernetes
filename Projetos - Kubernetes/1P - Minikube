@@ -1,0 +1,29 @@
+
+# Para instalação: https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download 
+# No meu ambiente usei o Minikube, por ele criar um cluster K8S de um nó único - é usado para ambientes de testes / locais 
+# Os componentes de "Control Plane" - kube-apiserver, kube-scheduler, kube-controler-managerrodam na mesma máquina / instância local 
+# Junto com os componentes do Worker: kubelet e kubeproxy 
+
+# Para ambientes de produção: 
+# EKS, GKE, AKS 
+# Kubeadm - Cluster Reais 
+# Kind - Kubernetes in Docker 
+
+1. Baixar o .exe e jogar na Pasta "Windows" (Para deixar o minikube já dentro das variáveis de ambiente do Windows) 
+
+2. minikube start 
+
+3. minikube kubectl -- get po -A
+
+4. minikube dashboard 
+   Obs.: Para ter uma visualização mais ampla dos recursos, administrar e acompanhar o estado de métricas / pods - junto com depuração e logs
+         Em ambientes de produção é mais complicado de user o Dashboard, pois possui vulnerabilidades e expõe APIs sensíveis
+		  Nesses casos, pode usar o Lens, Rancher, kubectl, Prometheus & Grafana, ArgoCD / FluxCD 
+
+5. kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+
+6. kubectl expose deployment hello-minikube --type=NodePort --port=8080
+
+7. kubectl get services hello-minikube
+
+8. minikube service hello-minikube (Abre o serviço no navegador)
