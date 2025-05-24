@@ -36,7 +36,7 @@
   
 |  ID  | Título                    | Descrição                                                                        | 
 | ---- | ------------------------- | ---------------------------------------------------------------------------------| 
-|    |     |                              |
+|  01  | Minikube - Instalação     | Instalação do Minikube e Deploy do "Hello-Minikube"                              |
 
 
 </div> 
