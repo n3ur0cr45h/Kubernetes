@@ -1,0 +1,108 @@
+
+
+1. minikube start 
+
+2. minikube create namespace projeto-nginx 
+
+3. vi deploy.yaml 
+
+	 apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: nginx-deployment
+     spec:
+       replicas: 3
+       selector:
+         matchLabels:
+           app: nginx
+       template:
+         metadata:
+           labels:
+             app: nginx
+         spec:
+           volumes:
+           - name: html-template
+             configMap:
+               name: nginx-template
+           - name: html-data
+             emptyDir: {}
+           containers:
+           - name: nginx
+             image: nginx:latest
+             ports:
+             - containerPort: 80
+             volumeMounts:
+             - name: html-data
+               mountPath: /usr/share/nginx/html
+           initContainers:
+           - name: html-generator
+             image: busybox:1.28
+             command: ["/bin/sh", "-c"]
+             args:
+             - |
+               sed "s/{{POD_NAME}}/${HOSTNAME}/g" /template/index.template.html > /html/index.html
+             env:
+             - name: HOSTNAME
+               valueFrom:
+                 fieldRef:
+                   fieldPath: metadata.name
+             volumeMounts:
+             - name: html-template
+               mountPath: /template
+             - name: html-data
+               mountPath: /html
+			   
+3. vi service.yaml 
+
+     apiVersion: v1
+     kind: Service
+     metadata:
+       name: nginx-service
+     spec:
+       selector:
+         app: nginx
+       type: NodePort
+       ports:
+         - protocol: TCP
+           port: 80
+           targetPort: 80
+           nodePort: 30080
+		   
+4. vi index.template.html 
+
+	 <!DOCTYPE html>
+     <html>
+     <head>
+       <title>Nginx</title>
+     </head>
+     <body>
+       <h1>Nginx - Pod: {{POD_NAME}}</h1>
+     </body>
+     </html>
+	 
+5. vi configmap.yaml 
+     apiVersion: v1
+     kind: ConfigMap
+     metadata:
+       name: nginx-template
+     data:
+       index.template.html: |
+         <!DOCTYPE html>
+         <html>
+         <head>
+           <title>Nginx</title>
+         </head>
+         <body>
+           <h1>Nginx - Server: {{POD_NAME}}</h1>
+         </body>
+         </html>
+		 
+6. kubectl apply -f configmap.yaml 
+
+7. kubectl apply -f deploy.yaml
+
+8. kubectl apply -f service.yaml 
+
+9. kubectl get pods 
+
+10. minikube service nginx-service 
