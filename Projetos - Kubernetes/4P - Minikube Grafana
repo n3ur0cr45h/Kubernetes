@@ -1,0 +1,25 @@
+1. minikube start 
+
+2. kubectl create namespace projeto-4
+
+3. Instalar o Helm para lidar com os pacotes no Kubernetes: 
+
+	 https://helm.sh/docs/intro/install/
+	 
+4. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts 
+
+5. helm repo update 
+
+6. helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace projeto-4
+
+7. kubectl get pods -n projeto-4 
+
+8. kubectl get svc -n projeto-4 
+
+9. kubectl patch svc kube-prometheus-stack-grafana -n projeto-4 -p '{"spec": {"type": "NodePort"}}'
+
+10. Para acessar de um Host Físico - aqui, instalei o Kubernetes em uma VM, que provisionou um container no Docker -, precisa instalar o OpenSSH-Server
+
+11. kubectl port-forward svc/grafana 3000:80 -n projeto-4
+
+12. Host Fìsico: ssh -L 3000:127.0.0.1:3000 usuario@ip da VM
