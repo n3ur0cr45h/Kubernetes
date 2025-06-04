@@ -33,15 +33,15 @@
 <br>
   
 <h5><b> 1. Fluxo Kubernetes :</h5></b> 
- ||| DEPLOYMENT -> Provisionamento 
+||| DEPLOYMENT -> Provisionamento Declarativo
 <br>
- ||| REPLICASET ---> Escalabilidade
+||| REPLICASET ---> Escalabilidade
 <br>
- ||| PODS ----------> Execução / Aplicação 
+||| PODS ----------> Execução / Aplicação 
 <br>
- ||| SERVICE -------> Exposição das Aplicações
+||| SERVICE -------> Exposição das Aplicações e Balancemaneto de Tráfego
 <br>
- ||| CLIENTE -------> Acesso aos Pods <br>
+||| CLIENTE -------> Acesso aos Pods <br>
 V
 
 </div> 
