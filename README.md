@@ -27,6 +27,27 @@
 </div>
 
 ----
+<details>
+  <summary><b> Informações </b></summary>
+<div align="Left"> 
+<br>
+  
+<h5><b> 1. Fluxo Kubernetes :</h5></b> 
+ ||| DEPLOYMENT -> Provisionamento 
+<br>
+ ||| REPLICASET ---> Escalabilidade
+<br>
+ ||| PODS ----------> Execução / Aplicação 
+<br>
+ ||| SERVICE -------> Exposição das Aplicações
+<br>
+ ||| CLIENTE -------> Acesso aos Pods <br>
+V
+
+</div> 
+</details>
+
+---
 
 <details>
   <summary><b> Projetos </b></summary>
