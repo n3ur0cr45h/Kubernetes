@@ -41,6 +41,7 @@
 |  03  | Minikube - Nginx          | Provisionar Web Servers informando o nome do Pod ao abrir o serviço              |
 |  04  | Minikube - Grafana        | Provisionar um servidor Grafana e acessar através do Host Físico                 |
 |  05  | Minikube - RabbitMQ       | Provisionar o RabbitMQ através do Minikube e acessar através do Host             |
+|  06  | Minikube - Canary         | Provisionar duas versões de App, e trocar o trafégo entre elas                   |
 
 </div> 
 </details>
