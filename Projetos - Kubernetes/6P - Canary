@@ -1,0 +1,76 @@
+
+
+1. minikube start --driver=hyperv --hyperv-virtual-switch="external"
+   Obs.: Se atentar ao switch / comutador que está usando no Hyper-V. 
+   
+2. blue-deploy.yaml 
+
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: canary-blue
+     spec:
+       replicas: 2
+       selector:
+         matchLabels:
+           app: app-canary
+           version: blue
+       template:
+         metadata:
+           labels:
+             app: app-canary
+             version: blue
+         spec:
+           containers:
+             - name: app
+               image: nginxdemos/hello
+               ports:
+                 - containerPort: 80
+				 
+3. green-deploy.yaml 
+
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: canary-green
+     spec:
+       replicas: 2
+       selector:
+         matchLabels:
+           app: app-canary
+           version: green
+       template:
+         metadata:
+           labels:
+             app: app-canary
+             version: green
+         spec:
+           containers:
+             - name: app
+               image: nginxdemos/hello
+               ports:
+                 - containerPort: 80
+				 
+3. service.yaml 
+
+     apiVersion: v1
+     kind: Service
+     metadata:
+       name: app-canary
+     spec:
+       selector:
+         app: app-canary
+         version: blue  
+       ports:
+         - protocol: TCP
+           port: 80
+           targetPort: 80
+       type: NodePort
+	   
+4. kubectl apply -f blue-deploy.yaml; kubectl apply -f green-deploy.yaml; kubectl apply -f service.yaml 
+
+5. kubectl get pods; kubectl get svc
+
+6. kubectl edit svc app-canary (para mudar de Blue para Green, e vice versa)
+
+7. minikube service app-canary
