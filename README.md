@@ -40,6 +40,7 @@
 |  02  | Minikube - App-Color      | Provisionar Aplicação: "WebApp-Color" para teste de Deploy                       |
 |  03  | Minikube - Nginx          | Provisionar Web Servers informando o nome do Pod ao abrir o serviço              |
 |  04  | Minikube - Grafana        | Provisionar um servidor Grafana e acessar através do Host Físico                 |
+|  05  | Minikube - RabbitMQ       | Provisionar o RabbitMQ através do Minikube e acessar através do Host             |
 
 </div> 
 </details>
