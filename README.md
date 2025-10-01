@@ -46,7 +46,52 @@ K1.3 - Cloud Native | Arquitetura Nativa da Nuvem
  >   - Escalável;  
  >   - Resiliente;  
  >   - Observável;  
- >   - Facilmente Atualizável.   
+ >   - Facilmente Atualizável.
+
+K1.4 - Arquitetura 
+ > - O Kubernetes é dividido em dois grupos de componentes:   
+   > - Control Plane - Gerenciamento do Cluster  
+   >   - API Server | kube-apiserver: Comunicação, Exposição da API do Kubernetes (kubectl);  
+   >   - Controller Manager | kube-controller-manager: Monitoramento do estado do Cluster;   
+   >   - Scheduler | kube-scheduler: Decide onde os pods rodarão - quais nodes;   
+   >   - etcd: Armazenamento do estado do cluster.   
+   > - Nodes - Máquinas onde os Contêineres rodam, formado por:  
+   >   - Kubelet: Agente de comunicação com o servidor API - comunica estado;  
+   >   - Kube-Proxy: Lida com a rede do cluster, a nível do node;  
+   >   - Container Runtime: Software responsável por rodar os contêineres (containerd, CRI-O, Docker).
+
+K1.5 - Pods | Contêineres | Labels 
+  > - Pod é o encapsulamento de um ou mais contêineres (normalmente, é apenas um contêiner por pod. Mas podem ter os sidecards).
+  > - Contêineres rodam as aplicações, e apenas dentro de um pod - usando imagens Docker ou OCI.
+  > - Labels são classificações para agrupar, selecionar, organizar os recursos.  
+
+K1.6 - Namespaces 
+  > - Namespace é a segmentação, isolamento, de recursos dentro de um cluster;  
+  > - Organiza os recursos por times, ambientes, projetos;  
+  > - Exemplo: para isolamento de ambientes (dev, test, prod).  
+  > - Padrões do Kubernetes:  
+  >   - default: padrão para objetos sem especificação de namespace;
+  >   - kube-system: Componentes do Cluster (CoreDNS, kube-proxy...);
+  >   - kube-public: Acesso público e leitura aos usuários;
+  >   - kube-node-lease: Gerenciamento dos heartbeats dos nodes para detecção de disponibilidade.
+
+K1.7 - Deployments | ReplicaSets | Services 
+  > - Deployments: Gerencia ReplicaSets e Pods - Rollouts, Rollbacks, Escalabilidade; 
+  > - ReplicaSets: Número fixo de réplicas de um pod;
+  > - Services: Expõe os pods para acesso interno ou externo ao Cluster;  
+  >   - Tipos de Services:  
+  >     - ClusterIP: Usado para comunicação entre pods e serviços;  
+  >     - NodePort: Abre porta fixa em todos os nodes do cluster (Costuma ser entre 30000-32767);  
+  >     - LoadBalancer: Solicitação de balanceador de carga externo (AWS ELB, GCP LB, Azure LB).  
+  
+K1.8 - ConfigMaps | Secrets   
+  > - ConfigMaps: Objeto do Kubernetes usado para armazenar dados de configuração em texto (não sensíveis - URLs, Flags, YAML, ini...);  
+  > - Secret: Objeto usado para armazenados dados sensíveis (tokens, senhas, certificados...);
+  > - Ambos podem ser usados como variáveis de ambiente ou volumes.
+
+K1.9 - DNS Interno | Service Discovery 
+  > - DNS Interno: Kubernetes possui um servidor DNS interno, que resolve nomes de serviços, pods e endpoints (implementado com CoreDNS);
+  > - Service Discovery: Permite aplicações se descobrirem e se conectarem a outros serviços, sem precisar do IP (via DNS ou variáveis de ambiente). 
 
 </div> 
 </details>
