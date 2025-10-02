@@ -93,6 +93,21 @@ K1.9 - DNS Interno | Service Discovery
   > - DNS Interno: Kubernetes possui um servidor DNS interno, que resolve nomes de serviços, pods e endpoints (implementado com CoreDNS);
   > - Service Discovery: Permite aplicações se descobrirem e se conectarem a outros serviços, sem precisar do IP (via DNS ou variáveis de ambiente). 
 
+K1.10 - Distros do Kubernetes
+
+ > | Nome        | Desenvolvedor  | Tipo    |
+ > |-------------|----------------|---------|
+ > | GKE         | Google         | Cloud   |
+ > | EKS         | Amazon         | Cloud   |
+ > | AKS         | Microsoft      | Cloud   |
+ > | OpenShift   | Red Hat        | Híbrido |
+ > | Rancher     | SUSE           | Híbrido |
+ > | K3s         | SUSE           | Edge    |
+ > | Minikube    | CNCF           | Local   |
+ > | MicroK8s    | Canonical      | Edge    |
+ > | Kind        | CNCF           | Local   |
+
+
 </div> 
 </details>
 
