@@ -162,7 +162,23 @@ K2.4 - Volumes
  >     - Persistent Volume Clain (PVC):
  >       - Requisição feita pelo usuário para usar o volume;
  >       - Define quantidade de armazenamento, acesso (ReadWriteOnce, etc), e classe de estorage; 
- >       - Kubernetes faz o binding automático entre o PVC e um PV compatível.   
+ >       - Kubernetes faz o binding automático entre o PVC e um PV compatível.
+       
+K2.5 - Storage Classes | Provisionamento Dinâmico
+ > - Storage Class
+ >   - Define como o armazenamento será provisionado;
+ >   - Cada StorageClass representa um tipo de volume con configurações específicas (SSD, HDD, Replicado...)
+ >   - Pode incluir provisionadores como:
+ >     - AWS EBS;
+ >     - GCE PD;
+ >     - NFS
+ >     - CSI Drivers (Ceph, Longhorn...)
+ >  - Provisionamento Dinâmico
+ >    - Com o StorageClass, o Kubernetes pode criar PVs automaticamente quando um PVC é criado;
+ >    - Evita a criação manual de PV's e é bem usado em ambientes de nuvem.
+    
+K2.6 - 
+ 
 
 </div> 
 </details>
