@@ -118,7 +118,51 @@ K1.10 - Distros do Kubernetes
 <div align="Left"> 
 <br>
 
+K2.1 - Horizontal Pod Autoscaler 
+ > - Recurso que escala automaticamente o número de pods em uma aplicação;
+ > - Possui base em métricas de CPU, Memória e Métricas Expostas pela Aplicação;
+ > - Pode aumentar ou reduzir a quantidade de pods, sozinho.  
 
+K2.2 - Liveness | Readiness Probes
+ > - Probes que verificam a saúde dos contêineres de um pod;
+ >   - Liveness Probe:
+ >     - Verifica se o contêiner está vivo. Caso contrário, reinicia.
+ >   - Readiness Probe: 
+ >     - Verifica se o contêiner pode receber requisições.
+ > - Tipos de Probes:
+ >   - HTTP (httpGet);
+ >   - TCP Socket (tcpSocket);
+ >   - Execução de Comando (exec).
+  
+K2.3 - Estratégias de Rollout
+ > - Formas de realizar o deploy (rollout), para atualizar aplicações com mínima ou nenhuma indisponibilidade;
+ >   - Rolling Update (padrão):
+ >     - Atualiza os pods gradualmente, substituindo os pods antigos pelos novos.  
+ >   - Blue / Green Deployment:
+ >     - Mantém as duas versões da aplicação, com Blue sendo a atual, e Green a nova;
+ >     - Quando a versão é validada, o tráfego é roteado para a Green - Fácil Rollback.    
+ >   - Canary Deployment:
+ >     - Nova versão recebe parte pequena do tráfego;
+ >     - Pode ir aumentando gradualmente, até possuir todo o tráfego 100%;
+ >     - Precisa de ferramentas como Argo Rollouts, Flagger, Istio...   
+
+K2.4 - Volumes 
+ > - Por padrão, o Kubernetes não mantém dados persistentes, tendo a mesma duração do pod;
+ > - No entanto, é possível desacoplar o armazenamento do ciclo de vida dos Pods, com os volumes;  
+ > - É o diretório acessível por um ou mais contêineres dentro de um pod.
+ > - Armazena dados temporários ou persistentes, dependendo do tipo:
+ >   - emptyDir: criado vazio, e dura conforme o pod.
+ >   - hostPath: Sistema de arquivos do nó.
+ >   - configMap, secret: Inserção de configurações e segredos como arquivos.
+ >   - persistentVolumeClaim: Conecta um volume persistente real, tendo dois tipos:
+ >     - Persistent Volume (PV):
+ >       - Representa um volume real de armazenamento;
+ >       - Pode ser um disco físico: EBS (AWS), NFS, Ceph, iSCSI, etc;
+ >       - Criado pelo administrador ou de forma dinâmica (via Storage Class).  
+ >     - Persistent Volume Clain (PVC):
+ >       - Requisição feita pelo usuário para usar o volume;
+ >       - Define quantidade de armazenamento, acesso (ReadWriteOnce, etc), e classe de estorage; 
+ >       - Kubernetes faz o binding automático entre o PVC e um PV compatível.   
 
 </div> 
 </details>
