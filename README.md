@@ -206,7 +206,14 @@ K2.9 - Metrics Server
  > - Add-On leve que coleeta métricas de uso de recursos dos Pods e Nodes CPU e Memória), direto do Kubelet;
  > - É bem limitado, pois não armazena histórico, não possui visualização gráfica e métricas limitadas a CPU e memória.
 
-K2.10
+K2.10 - Multi-Tenancy (Básico)
+ > - Isolamento de amibentes dentro de um cluster, utilizando recursos nativos do K8s (Por isso o "básico");
+ > - Ferramentas:
+ >   - Namespaces;
+ >   - Network Policies; 
+ >   - RBAC;
+ >   - ResourceQuota: limita uso de recursos por namespace;
+ >   - LimitRanges: Define limites por contâiner / pod dentro de um namespace.    
 
 </div> 
 </details>
