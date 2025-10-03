@@ -263,7 +263,21 @@ K3.3 - Upgrades de Cluster e Nodes
  >   - Backup antes do Upgrade;
  >   - Ambiente de staging para teste do update;
  >   - Leitura do changelog da nova versão;
- >   - Automação com Observabilidade.          
+ >   - Automação com Observabilidade.
+
+K3.4 - CRD (Custom Resource Definitions) | Operators 
+ > - CRDs extendem o Kubernetes com novos tipos de cursos, além dos padrões como Pods, Services...
+ >   - São "Tipos de Objetos" definidos pelo usuário.
+ > - Operators automatizam operações complexes (deploy, backup, upgrade) sobre CRDs;
+ >   - Escritos, normalmente, em Go, usando o Operador SDK. Mas podem ser feitos em outras linguagens;
+ >   - Exemplos de Operators:
+ >     - Prometheus Operator;
+ >     - Elasticsearch Operator;
+ >     - PostgreSQL Operator.
+ >   - Benefícios:
+ >     - Redução de complexidade na administração;
+ >     - Automatizam ciclos de vida de aplicações stateful;
+ >     - Encapsulam lógica de DevOps dentro do Cluster.          
 
 </div> 
 </details>
