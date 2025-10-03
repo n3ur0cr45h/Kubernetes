@@ -225,7 +225,28 @@ K2.10 - Multi-Tenancy (Básico)
 <div align="Left"> 
 <br>
 
+K3.1 - Cluster Federation | Multi-Cluster
+ > - Orquestração e gerenciamento de múltiplos clusters, a partir de um ponto central;
+ > - Útil em ambientes multi-região, multi-cloud ou híbridos.
+ > - Características:
+ >   - Propagação de recursos - Deployments, ConfiMaps -, para múltiplos clusters;
+ >   - Gerenciamento de política de segurança de forma centralizada;
+ >   - Alta disponibilidade global e recuperação de desastres.
+ > - Ferramentas:
+ >   - KubeFed (Kubernetes Cluster Federation);
+ >   - Rancher, Anthos, AKS Multi-Cluster (Azure), Amazon EKS Anywhere.       
 
+K3.2 - etcd BackUp | Restore 
+ > - etcd é o banco de dados chave-valor onde o Kubernetes armazena o estado do cluster;
+ > - Fazer backup e restaurar o etcd pode parantir a recuperação em casos de falhas;
+ > - Realizado direatamente com o binário "etcdctl";
+ > - Importante criptografar e versionar os backups;
+ > - Para restaurar, usar o "etcdctl snapshot restore".
+ > - Boas Práticas:
+ >   - Backups frequentes;
+ >   - Armazenamento offsite;
+ >   - Automatização com cronjobs e Scripts;
+ >   - Testar restaurações periodicamente.      
 
 </div> 
 </details>
