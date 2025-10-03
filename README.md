@@ -177,8 +177,24 @@ K2.5 - Storage Classes | Provisionamento Dinâmico
  >    - Com o StorageClass, o Kubernetes pode criar PVs automaticamente quando um PVC é criado;
  >    - Evita a criação manual de PV's e é bem usado em ambientes de nuvem.
     
-K2.6 - 
- 
+K2.6 - Service Accounts 
+ > - Identidade usada por pods para interagir com a API do Kubernetes;
+ > - Usada programaticamente - permintindo aplicações se autenticarem na API;
+ > - Utilizada em conjunto com o RBAC para permissões específicas.
+ >   - Componentes do Role Based Access Control:
+ >     - Role: Define permissões dentro de um namespace;
+ >     - ClusterRole: Permissões válidas em todo o Cluster;
+ >     - RoleBinding: Atribui uma Role a uma ServiceAccount ou Usuário;
+ >     - ClusterRoleBinding: Liga uma ClusterRole a uma conta - SA ou usuário.
+
+K2.7 - Network Policies
+ > - Limitação de tráfego de rede entre os pods;
+ > - Por padrão, os pods se comunicam sem regras, então seria um Firewall interno;
+ > - Tipos de Controle:
+ >   - Ingress (Qual pod pode receber tráfego);
+ >   - Egress (Qual pod pode enviar tráfego);
+ >     - Baseados em Namespace, Labels, IP Ranges, Portas e Protocolos.
+ > - Network Policies só funciona se o CNI (Container Network Interface, suportar). 
 
 </div> 
 </details>
