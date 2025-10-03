@@ -248,6 +248,23 @@ K3.2 - etcd BackUp | Restore
  >   - Automatização com cronjobs e Scripts;
  >   - Testar restaurações periodicamente.      
 
+K3.3 - Upgrades de Cluster e Nodes 
+ > - Atualizar o Kubernetes é importante para segurança, desempenho e compatibilidade.
+ > - Atualização de Cluster, na ordem:
+ >   - kubeadm upgrade plan;
+ >   - Atualizar o plano de controle  (control plane);
+ >   - Atualizar os nodes workers.
+ > - Atualização de Nodes:
+ >   - Drain do Node (kubectl drain (node));
+ >   - Atualização do Sistema e kubelet;
+ >   - Uncordon (kubectl uncordon (node)).
+ >     - Pode ser feito manualmente ou com ferramentas de automação - Ansible, Terraform. 
+ > - Boas Práticas:
+ >   - Backup antes do Upgrade;
+ >   - Ambiente de staging para teste do update;
+ >   - Leitura do changelog da nova versão;
+ >   - Automação com Observabilidade.          
+
 </div> 
 </details>
 
