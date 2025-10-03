@@ -194,7 +194,19 @@ K2.7 - Network Policies
  >   - Ingress (Qual pod pode receber tráfego);
  >   - Egress (Qual pod pode enviar tráfego);
  >     - Baseados em Namespace, Labels, IP Ranges, Portas e Protocolos.
- > - Network Policies só funciona se o CNI (Container Network Interface, suportar). 
+ > - Network Policies só funciona se o CNI (Container Network Interface, suportar).
+
+K2.8 - Logs
+ > - Logs são as saídades de texto das aplicações dentro dos contêineres;
+ > - Normalmente geradas por stdout e stderr;
+ > - Não armazena histório de logs antigos - apenas atuais;
+ > - Para logs persistentes e centralizados, usar ELK, LGTM com Fluentd / Fluent Bit, Datadog, New Relic...   
+
+K2.9 - Metrics Server
+ > - Add-On leve que coleeta métricas de uso de recursos dos Pods e Nodes CPU e Memória), direto do Kubelet;
+ > - É bem limitado, pois não armazena histórico, não possui visualização gráfica e métricas limitadas a CPU e memória.
+
+K2.10
 
 </div> 
 </details>
