@@ -279,6 +279,31 @@ K3.4 - CRD (Custom Resource Definitions) | Operators
  >     - Automatizam ciclos de vida de aplicações stateful;
  >     - Encapsulam lógica de DevOps dentro do Cluster.          
 
+K3.5 - Pod Security Admission (PSA) | Policies 
+ > - Políticas de segurança no nível de Pods, substituindo o PSP (PodSecurityPolicy) - que foi descontinuado.
+ > - O PSA valida as configurações de Pods usando 3 níveis de segurança:
+ >   - Privileged: Sem restrições;
+ >   - Baseline: Workloads não maliciosos, que podem ter permissões elevadas moderadas;
+ >   - Restricted: Mais seguro, para workloads com o menor privilégio possível.
+ > - Aplica rótulos em namespaces com um dos níveis acima, e o modo desejado, que pode ser:
+ >   - enforce: bloqueia pods que não cumprem as regras;
+ >   - audit: permite, mas registra que não está em conformidade;
+ >   - warn: permite, mas envia alertas ao usuário.
+
+K3.6 - Network Policies Avançadas 
+ > - Controlam o tráfego de entrada e saída entre os Pods;
+ > - Isola aplicações e minimiza superfícies de ataque.
+ > - Funcionalidades Básicas:
+ >   - Baseadas em labels de Pods;
+ >   - Definem regras de Ingress (entrada) e Egress (Saída)
+ >   - Controla o tráfego por: Namespace, CIDR, Portas / Protocolos.
+ > - Para políticas avançadas, necessário usar plugins CNI (Container Network Interface), exemplos:
+ >   - Calico;
+ >   - Cilium.         
+
+K3.7 - Observabilidade 
+ > - 
+
 </div> 
 </details>
 
