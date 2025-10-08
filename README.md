@@ -301,7 +301,7 @@ K3.6 - Network Policies Avançadas
  >   - Calico;
  >   - Cilium.         
 
-K3.8 - Node Affinity | Taints | Tolerations
+K3.7 - Node Affinity | Taints | Tolerations
  > - Controla onde os pods rodam, influenciando o agendamento - direcionamento de pods;
  > - Uma forma inteligente para performance, isolamento ou compliance.
  > - Node Affinity:
@@ -311,38 +311,38 @@ K3.8 - Node Affinity | Taints | Tolerations
  > - Tolerations:
  >   - Permite que certos pods ignorem os taints.
 
-K3.9 - Resource Requests | Limits 
+K3.8 - Resource Requests | Limits 
  > - Requests:
  >   - Quantidade mínima de CPU / memória reservada para o pod;
  >   - A quantidade é usada pelo scheduler para decidir onde alocar.
  > - Limits:
  >   - Quantidade máxima de CPU / memória que o pod pode usar.  
   
-K3.10 - Cluster Autoscaler 
+K3.9 - Cluster Autoscaler 
  > - Expandir ou reduzir automaticamente o número de nodes, com base na demanda de recursos do Cluster;
  >   - Se há pods pendentes (não agendados por falta de recursos), o autoscaler adiciona nodes;
  >   - Se há nodes ocisosos por um período, ocorre a remoção de nodes.
 
-K3.11 - Helm
+K3.10 - Helm
  > - Ferramenta de gerenciamento de pacotes para Kubernetes;
  > - Permite que você crie, use e compartilhe charts - pacotes pré-configurados;
  > - Simplifica deploy e a gestão de recursos no Kubernetes.
  >   - Helm Chart é um conjunto de arquivos que define um deploy no Kubernetes;
  >   - Pode incluir Deployments, Services, ConfigMaps, Secrets, etc.
 
-K3.12 - Kustomize
+K3.11 - Kustomize
  > - Ferramenta nativa do Kubernetes, permite personalização manifests YAML;
  > - Mais simples / fácil que Helm;
  > - Permite overlays dinâmicos para diferentes ambientes (produção, dev...)
 
-K3.13 - GitOps com ArgoCD | Flux 
+K3.12 - GitOps com ArgoCD | Flux 
  > - GitOps é uma abordagem onde o estado desejado do sistema é amrazenado em um repositório Git;
  > - As mudanças são aplicadas automaticamente ao cluster Kubernetes por ferramentas como ArgoCD e Flux. 
  >   - ArgoCD e Flux são ferramentas de GitOps que permitem deploy contínuo a partir de repositórios Git;
  >   - Qualquer alteração no repositório, aciona a atualização no Kubernetes;
  >   - Isso porque as ferramentas monitoram o repositório, e comparam o estado desejado com o estado atual do Cluster.    
 
-K3.14 - Pipelines com CI/CD
+K3.13 - Pipelines com CI/CD
  > - Automatização de build, teste e deploy das aplicações no Kubernetes usando CI/CD;
  > - Ferramentas como Jenkins, GitLab CI, CircleCI, Tekton.
  > - Boas práticas de CI/CD com Kubernetes:
