@@ -15,7 +15,7 @@
 ----
 
 <details>
-  <summary><b> 1. Fundamentos</b></summary>
+  <summary><b> 1. Tópicos</b></summary>
 <div align="Left"> 
 <br>
 
@@ -107,23 +107,12 @@ K1.10 - Distros do Kubernetes
  > | MicroK8s    | Canonical      | Edge    |
  > | Kind        | CNCF           | Local   |
 
-
-</div> 
-</details>
-
-----
-
-<details>
-  <summary><b> 2. Intermediário</b></summary>
-<div align="Left"> 
-<br>
-
-K2.1 - Horizontal Pod Autoscaler 
+K1.11 - Horizontal Pod Autoscaler 
  > - Recurso que escala automaticamente o número de pods em uma aplicação;
  > - Possui base em métricas de CPU, Memória e Métricas Expostas pela Aplicação;
  > - Pode aumentar ou reduzir a quantidade de pods, sozinho.  
 
-K2.2 - Liveness | Readiness Probes
+K1.12 - Liveness | Readiness Probes
  > - Probes que verificam a saúde dos contêineres de um pod;
  >   - Liveness Probe:
  >     - Verifica se o contêiner está vivo. Caso contrário, reinicia.
@@ -134,7 +123,7 @@ K2.2 - Liveness | Readiness Probes
  >   - TCP Socket (tcpSocket);
  >   - Execução de Comando (exec).
   
-K2.3 - Estratégias de Rollout
+K1.13 - Estratégias de Rollout
  > - Formas de realizar o deploy (rollout), para atualizar aplicações com mínima ou nenhuma indisponibilidade;
  >   - Rolling Update (padrão):
  >     - Atualiza os pods gradualmente, substituindo os pods antigos pelos novos.  
@@ -146,7 +135,7 @@ K2.3 - Estratégias de Rollout
  >     - Pode ir aumentando gradualmente, até possuir todo o tráfego 100%;
  >     - Precisa de ferramentas como Argo Rollouts, Flagger, Istio...   
 
-K2.4 - Volumes 
+K1.14 - Volumes 
  > - Por padrão, o Kubernetes não mantém dados persistentes, tendo a mesma duração do pod;
  > - No entanto, é possível desacoplar o armazenamento do ciclo de vida dos Pods, com os volumes;  
  > - É o diretório acessível por um ou mais contêineres dentro de um pod.
@@ -164,7 +153,7 @@ K2.4 - Volumes
  >       - Define quantidade de armazenamento, acesso (ReadWriteOnce, etc), e classe de estorage; 
  >       - Kubernetes faz o binding automático entre o PVC e um PV compatível.
        
-K2.5 - Storage Classes | Provisionamento Dinâmico
+K1.15 - Storage Classes | Provisionamento Dinâmico
  > - Storage Class
  >   - Define como o armazenamento será provisionado;
  >   - Cada StorageClass representa um tipo de volume con configurações específicas (SSD, HDD, Replicado...)
@@ -177,7 +166,7 @@ K2.5 - Storage Classes | Provisionamento Dinâmico
  >    - Com o StorageClass, o Kubernetes pode criar PVs automaticamente quando um PVC é criado;
  >    - Evita a criação manual de PV's e é bem usado em ambientes de nuvem.
     
-K2.6 - Service Accounts 
+K1.16 - Service Accounts 
  > - Identidade usada por pods para interagir com a API do Kubernetes;
  > - Usada programaticamente - permintindo aplicações se autenticarem na API;
  > - Utilizada em conjunto com o RBAC para permissões específicas.
@@ -187,7 +176,7 @@ K2.6 - Service Accounts
  >     - RoleBinding: Atribui uma Role a uma ServiceAccount ou Usuário;
  >     - ClusterRoleBinding: Liga uma ClusterRole a uma conta - SA ou usuário.
 
-K2.7 - Network Policies
+K1.17 - Network Policies
  > - Limitação de tráfego de rede entre os pods;
  > - Por padrão, os pods se comunicam sem regras, então seria um Firewall interno;
  > - Tipos de Controle:
@@ -196,17 +185,17 @@ K2.7 - Network Policies
  >     - Baseados em Namespace, Labels, IP Ranges, Portas e Protocolos.
  > - Network Policies só funciona se o CNI (Container Network Interface, suportar).
 
-K2.8 - Logs
+K1.18 - Logs
  > - Logs são as saídades de texto das aplicações dentro dos contêineres;
  > - Normalmente geradas por stdout e stderr;
  > - Não armazena histório de logs antigos - apenas atuais;
  > - Para logs persistentes e centralizados, usar ELK, LGTM com Fluentd / Fluent Bit, Datadog, New Relic...   
 
-K2.9 - Metrics Server
+K1.19 - Metrics Server
  > - Add-On leve que coleeta métricas de uso de recursos dos Pods e Nodes CPU e Memória), direto do Kubelet;
  > - É bem limitado, pois não armazena histórico, não possui visualização gráfica e métricas limitadas a CPU e memória.
 
-K2.10 - Multi-Tenancy (Básico)
+K1.20 - Multi-Tenancy (Básico)
  > - Isolamento de amibentes dentro de um cluster, utilizando recursos nativos do K8s (Por isso o "básico");
  > - Ferramentas:
  >   - Namespaces;
@@ -215,17 +204,7 @@ K2.10 - Multi-Tenancy (Básico)
  >   - ResourceQuota: limita uso de recursos por namespace;
  >   - LimitRanges: Define limites por contâiner / pod dentro de um namespace.    
 
-</div> 
-</details>
-
-----
-
-<details>
-  <summary><b> 3. Avançado</b></summary>
-<div align="Left"> 
-<br>
-
-K3.1 - Cluster Federation | Multi-Cluster
+K1.21 - Cluster Federation | Multi-Cluster
  > - Orquestração e gerenciamento de múltiplos clusters, a partir de um ponto central;
  > - Útil em ambientes multi-região, multi-cloud ou híbridos.
  > - Características:
@@ -236,7 +215,7 @@ K3.1 - Cluster Federation | Multi-Cluster
  >   - KubeFed (Kubernetes Cluster Federation);
  >   - Rancher, Anthos, AKS Multi-Cluster (Azure), Amazon EKS Anywhere.       
 
-K3.2 - etcd BackUp | Restore 
+K1.22 - etcd BackUp | Restore 
  > - etcd é o banco de dados chave-valor onde o Kubernetes armazena o estado do cluster;
  > - Fazer backup e restaurar o etcd pode parantir a recuperação em casos de falhas;
  > - Realizado direatamente com o binário "etcdctl";
@@ -248,7 +227,7 @@ K3.2 - etcd BackUp | Restore
  >   - Automatização com cronjobs e Scripts;
  >   - Testar restaurações periodicamente.      
 
-K3.3 - Upgrades de Cluster e Nodes 
+K1.23 - Upgrades de Cluster e Nodes 
  > - Atualizar o Kubernetes é importante para segurança, desempenho e compatibilidade.
  > - Atualização de Cluster, na ordem:
  >   - kubeadm upgrade plan;
@@ -265,7 +244,7 @@ K3.3 - Upgrades de Cluster e Nodes
  >   - Leitura do changelog da nova versão;
  >   - Automação com Observabilidade.
 
-K3.4 - CRD (Custom Resource Definitions) | Operators 
+K1.24 - CRD (Custom Resource Definitions) | Operators 
  > - CRDs extendem o Kubernetes com novos tipos de cursos, além dos padrões como Pods, Services...
  >   - São "Tipos de Objetos" definidos pelo usuário.
  > - Operators automatizam operações complexes (deploy, backup, upgrade) sobre CRDs;
@@ -279,7 +258,7 @@ K3.4 - CRD (Custom Resource Definitions) | Operators
  >     - Automatizam ciclos de vida de aplicações stateful;
  >     - Encapsulam lógica de DevOps dentro do Cluster.          
 
-K3.5 - Pod Security Admission (PSA) | Policies 
+K1.25 - Pod Security Admission (PSA) | Policies 
  > - Políticas de segurança no nível de Pods, substituindo o PSP (PodSecurityPolicy) - que foi descontinuado.
  > - O PSA valida as configurações de Pods usando 3 níveis de segurança:
  >   - Privileged: Sem restrições;
@@ -290,7 +269,7 @@ K3.5 - Pod Security Admission (PSA) | Policies
  >   - audit: permite, mas registra que não está em conformidade;
  >   - warn: permite, mas envia alertas ao usuário.
 
-K3.6 - Network Policies Avançadas 
+K1.26 - Network Policies Avançadas 
  > - Controlam o tráfego de entrada e saída entre os Pods;
  > - Isola aplicações e minimiza superfícies de ataque.
  > - Funcionalidades Básicas:
@@ -301,7 +280,7 @@ K3.6 - Network Policies Avançadas
  >   - Calico;
  >   - Cilium.         
 
-K3.7 - Node Affinity | Taints | Tolerations
+K1.27 - Node Affinity | Taints | Tolerations
  > - Controla onde os pods rodam, influenciando o agendamento - direcionamento de pods;
  > - Uma forma inteligente para performance, isolamento ou compliance.
  > - Node Affinity:
@@ -311,38 +290,38 @@ K3.7 - Node Affinity | Taints | Tolerations
  > - Tolerations:
  >   - Permite que certos pods ignorem os taints.
 
-K3.8 - Resource Requests | Limits 
+K1.28 - Resource Requests | Limits 
  > - Requests:
  >   - Quantidade mínima de CPU / memória reservada para o pod;
  >   - A quantidade é usada pelo scheduler para decidir onde alocar.
  > - Limits:
  >   - Quantidade máxima de CPU / memória que o pod pode usar.  
   
-K3.9 - Cluster Autoscaler 
+K1.29 - Cluster Autoscaler 
  > - Expandir ou reduzir automaticamente o número de nodes, com base na demanda de recursos do Cluster;
  >   - Se há pods pendentes (não agendados por falta de recursos), o autoscaler adiciona nodes;
  >   - Se há nodes ocisosos por um período, ocorre a remoção de nodes.
 
-K3.10 - Helm
+K1.30 - Helm
  > - Ferramenta de gerenciamento de pacotes para Kubernetes;
  > - Permite que você crie, use e compartilhe charts - pacotes pré-configurados;
  > - Simplifica deploy e a gestão de recursos no Kubernetes.
  >   - Helm Chart é um conjunto de arquivos que define um deploy no Kubernetes;
  >   - Pode incluir Deployments, Services, ConfigMaps, Secrets, etc.
 
-K3.11 - Kustomize
+K1.31 - Kustomize
  > - Ferramenta nativa do Kubernetes, permite personalização manifests YAML;
  > - Mais simples / fácil que Helm;
  > - Permite overlays dinâmicos para diferentes ambientes (produção, dev...)
 
-K3.12 - GitOps com ArgoCD | Flux 
+K1.32 - GitOps com ArgoCD | Flux 
  > - GitOps é uma abordagem onde o estado desejado do sistema é amrazenado em um repositório Git;
  > - As mudanças são aplicadas automaticamente ao cluster Kubernetes por ferramentas como ArgoCD e Flux. 
  >   - ArgoCD e Flux são ferramentas de GitOps que permitem deploy contínuo a partir de repositórios Git;
  >   - Qualquer alteração no repositório, aciona a atualização no Kubernetes;
  >   - Isso porque as ferramentas monitoram o repositório, e comparam o estado desejado com o estado atual do Cluster.    
 
-K3.13 - Pipelines com CI/CD
+K1.33 - Pipelines com CI/CD
  > - Automatização de build, teste e deploy das aplicações no Kubernetes usando CI/CD;
  > - Ferramentas como Jenkins, GitLab CI, CircleCI, Tekton.
  > - Boas práticas de CI/CD com Kubernetes:
